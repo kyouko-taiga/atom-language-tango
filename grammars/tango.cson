@@ -1,0 +1,280 @@
+'scopeName': 'source.tango'
+'name': 'Tango'
+'firstLineMatch': '^#!\\s*/.*\\btango'
+'fileTypes': [
+  'tango'
+  'tng'
+]
+'patterns': [
+  {
+    'include': '#comments'
+  }
+  {
+    # Keywords that denote flow conditionals.
+    'name': 'keyword.control.conditional.tango'
+    'match': '\\b(if|else|switch)\\b'
+  }
+  {
+    # Keywords that denote loops.
+    'name': 'keyword.control.repeat.tango'
+    'match': '\\b(for|while)\\b'
+  }
+  {
+    # Keywords that alter flow from within a block.
+    'name': 'keyword.control.statement.tango'
+    'match': '\\b(break|continue|return)\\b'
+  }
+  {
+    # Keywords that denote casting operators.
+    'name': 'keyword.operator.casting.tango'
+    'match': '\\b(as|is)\\b'
+  }
+  {
+    # Keywords that denote logical expressions.
+    'name': 'keyword.operator.logical.tango'
+    'match': '\\b(and|or)\\b'
+  }
+  {
+    # Keywords that denote reserved method names.
+    'name': 'keyword.reserved.tango'
+    'match': '\\b(new|del|get|set)\\b'
+  }
+  {
+    # Other keywords.
+    'name': 'keyword.other.tango'
+    'match': '\\b(in|where|import)\\b'
+  }
+  {
+    'name': 'keyword.operator.comparison.tango'
+    'match': '<\\=|>\\=|<|>|\\=\\=\\=|\\!\\=\\=|\\=\\=|\\!\\=|~\\='
+  }
+  {
+    'name': 'keyword.operator.comparison.tango'
+    'match': '<\\=|>\\=|<|>|\\=\\=\\=|\\!\\=\\=|\\=\\=|\\!\\='
+  }
+  {
+    'match': '\\+\\=|-\\=|\\*\\=|/\\=|%\\=|&\\=|\\|\\=|\\^\\=|>>\\=|<<\\='
+    'name': 'keyword.operator.assignment.augmented.tango'
+  }
+  {
+    'match': '\\='
+    'name': 'keyword.operator.assignment.tango'
+  }
+  {
+    'match': '\\+|\\-|\\*|\\*\\*|/|//|%|<<|>>|&|\\||\\^|~'
+    'name': 'keyword.operator.arithmetic.tango'
+  }
+  {
+    # Identifiers that denote language constants.
+    'name': 'constant.language.tango'
+    'match': '\\b(true|false)\\b'
+  }
+  {
+    'include': '#literals'
+  }
+  {
+    'include': '#type-signatures'
+  }
+  {
+    'include': '#var-decl'
+  }
+  {
+    'include': '#fun-decl'
+  }
+  {
+    'include': '#struct-decl'
+  }
+  {
+    'include': '#enum-decl'
+  }
+  {
+    'include': '#enum-case-decl'
+  }
+  {
+    'include': '#protocol-decl'
+  }
+  {
+    'include': '#extension-decl'
+  }
+]
+'repository':
+  'comments':
+    'patterns': [
+      {
+        'begin': '#'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.comment.tango'
+        'end': '$'
+        'name': 'comment.line.number-sign.tango'
+      }
+    ]
+  'literals':
+    'patterns': [
+      {
+        'include': '#strings'
+      }
+      {
+        'include': '#numbers'
+      }
+    ]
+  'strings':
+    'patterns': [
+      'begin': '\''
+      'beginCaptures':
+        '1':
+          'name': 'punctuation.definition.string.begin.tango'
+      'end': '\''
+      'endCaptures':
+        '1':
+          'name': 'punctuation.definition.string.end.tango'
+      'name': 'string.quoted.single.tango'
+    ]
+  'numbers':
+    'patterns': [
+      {
+        'match': '0|(?:[1-9][0-9]*)\\.[0-9]+(?:[Ee][+-]?[0-9]+)',
+        'name': 'constant.numeric.float.tango'
+      }
+      {
+        'match': '\\b(0|[1-9][0-9]*(\\.[0-9]+)?([Ee][+-]?[0-9]+)?)',
+        'name': 'constant.numeric.decimal.tango'
+      }
+    ]
+  'type-signatures':
+    'patterns': [
+      {
+        'include': '#builtin-types'
+      }
+    ]
+  'builtin-types':
+    'patterns': [
+      {
+        'name': 'support.type.tango'
+        'match': '(?x) \\b(Type
+          |Nothing
+          |Anything
+          |Self
+          |Int
+          |Double
+          |String
+          |Bool
+          |Array
+          |Dictionary
+          |Set
+          |Optional
+          |Fallible
+          |Error)\\b'
+      }
+    ]
+  'var-decl':
+    'patterns': [
+      {
+        'match': '\\b(cst|mut|shd|abs)(?:\\s+(\\w+))?\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.mutability-modifier.tango'
+          '2':
+            'name': 'entity.name.variable.tango'
+          '3':
+            'name': 'entity.name.variable.tango'
+      }
+    ]
+  'fun-decl':
+    'patterns': [
+      {
+        'match': '\\b(fun)\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.function.tango'
+          '2':
+            'name': 'entity.name.function.tango'
+      }
+    ]
+  'struct-decl':
+    'patterns': [
+      {
+        'match': '\\b(struct)\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.class.tango'
+          '2':
+            'name': 'entity.name.class.tango'
+      }
+    ]
+  'enum-decl':
+    'patterns': [
+      {
+        'match': '\\b(enum)\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.class.tango'
+          '2':
+            'name': 'entity.name.class.tango'
+      }
+    ]
+  'enum-case-decl':
+    'patterns': [
+      {
+        'begin': '\\b(case)\\s+(\\w+)\\s*(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.case.tango'
+          '2':
+            'name': 'entity.name.function.tango'
+          '3':
+            'name': 'punctuation.definition.parameters.begin'
+        'end':
+          '(\\))'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.parameters.end'
+        'patterns': [
+          {
+            'include': '#enum-case-param'
+          }
+          {
+            'include': '#type-signatures'
+          }
+        ]
+      }
+      {
+        'match': '\\b(case)\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.case.tango'
+          '2':
+            'name': 'entity.name.function.tango'
+      }
+    ]
+  'enum-case-param':
+    'patterns': [
+      {
+        'match': '\\b(\\w+(?=\\s*:))'
+        'captures':
+          '1':
+            'name': 'entity.name.variable.tango'
+      }
+    ]
+  'protocol-decl':
+    'patterns': [
+      {
+        'match': '\\b(protocol)\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.class.tango'
+          '2':
+            'name': 'entity.name.class.tango'
+      }
+    ]
+  'extension-decl':
+    'patterns': [
+      {
+        'match': '\\b(extension)\\s+(\\w+)'
+        'captures':
+          '1':
+            'name': 'storage.type.class.tango'
+          '2':
+            'name': 'entity.name.class.tango'
+      }
+    ]

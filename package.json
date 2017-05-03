@@ -1,0 +1,15 @@
+{
+  "name": "language-tango",
+  "version": "0.1.0",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "description": "Tango language support in Atom.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kyouko-taiga/atom-language-tango"
+  },
+  "license": "MIT",
+  "dependencies": {
+  }
+}
